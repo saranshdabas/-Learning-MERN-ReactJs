@@ -1,27 +1,30 @@
 import React from "react";
 import ReactDom from "react-dom";
 
+//CSS
+import "./index.css";
+
 //Nested componenets
 function Greeting() {
   return (
-    <div>
+    <section className="booklist">
       <Book />
       <Book />
       <Book />
       <Book />
       <Book />
       <Book />
-    </div>
+    </section>
   );
 }
 
 const Book = () => {
   return (
-    <div>
+    <article className="book">
       <Image />
       <Title />
       <Author />
-    </div>
+    </article>
   );
 };
 
