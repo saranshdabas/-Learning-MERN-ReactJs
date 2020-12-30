@@ -5,18 +5,35 @@ import ReactDom from "react-dom";
 function Greeting() {
   return (
     <div>
-      <Heading />
-      <Message />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
     </div>
   );
 }
 
-//Implicit arrow fn return
-const Heading = () => <h1>Heading of the century</h1>;
-
-//Explicit return
-const Message = () => {
-  return <h4>Hello world!</h4>;
+const Book = () => {
+  return (
+    <div>
+      <Image />
+      <Title />
+      <Author />
+    </div>
+  );
 };
+
+//Implicit arrow fn return
+const Image = () => (
+  <img src="https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg" />
+);
+
+const Author = () => <h6>Héctor García</h6>;
+
+const Title = () => (
+  <h5>Ikigai: The Japanese secret to a long and happy life </h5>
+);
 
 ReactDom.render(<Greeting />, document.getElementById("root"));
