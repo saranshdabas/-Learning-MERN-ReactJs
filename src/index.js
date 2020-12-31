@@ -4,44 +4,42 @@ import ReactDom from "react-dom";
 //CSS
 import "./index.css";
 
-const title = "Ikigai: The Japanese secret to a long and happy life";
-const author = "Héctor García";
+const book1 = {
+  title: "Ikigai: The Japanese secret to a long and happy life",
+  author: "Héctor García",
+  img:
+    "https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg",
+};
+const book2 = {
+  title: "The Alchemist",
+  author: "Paulo Coelho",
+  img:
+    "https://images-eu.ssl-images-amazon.com/images/I/71aFt4%2BOTOL._AC_UL200_SR200,200_.jpg",
+};
 
-//Nested componenets
+//Passing props values in JSX
 function Greeting() {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      <Book img={book1.img} title={book1.title} author={book1.author} />
+      <Book img={book2.img} title={book2.title} author={book2.author} />
     </section>
   );
 }
 
-const Book = () => {
+//Passing props as parametres
+const Book = (props) => {
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={props.img} />
+      <h5> {props.title} </h5>
+      <h6
+        style={{ color: "#617d98", fontSize: "0.75rem", marginTop: "0.25rem" }}
+      >
+        {props.author.toUpperCase()}
+      </h6>
     </article>
   );
 };
-
-//Implicit arrow fn return
-const Image = () => (
-  <img src="https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg" />
-);
-
-const Author = () => (
-  <h6 style={{ color: "#617d98", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-    {author.toUpperCase()}
-  </h6>
-);
-
-const Title = () => <h5> {title} </h5>;
 
 ReactDom.render(<Greeting />, document.getElementById("root"));
