@@ -4,40 +4,36 @@ import ReactDom from "react-dom";
 //CSS
 import "./index.css";
 
-const book1 = {
-  title: "Ikigai: The Japanese secret to a long and happy life",
-  author: "Héctor García",
-  img:
-    "https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg",
-};
-const book2 = {
-  title: "The Alchemist",
-  author: "Paulo Coelho",
-  img:
-    "https://images-eu.ssl-images-amazon.com/images/I/71aFt4%2BOTOL._AC_UL200_SR200,200_.jpg",
-};
+const bookList = [
+  {
+    title: "Ikigai: The Japanese secret to a long and happy life",
+    author: "Héctor García",
+    img:
+      "https://images-eu.ssl-images-amazon.com/images/I/81l3rZK4lnL._AC_UL200_SR200,200_.jpg",
+  },
+  {
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    img:
+      "https://images-eu.ssl-images-amazon.com/images/I/71aFt4%2BOTOL._AC_UL200_SR200,200_.jpg",
+  },
+];
 
-//Passing props values in JSX
-//Child element is an elemetn in bw opening and closing tag of parent element
+//Using map to return a list of books (JSX can render a list of objects)
 function Greeting() {
   return (
     <section className="booklist">
-      <Book img={book1.img} title={book1.title} author={book1.author}>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae esse
-          alias eaque est doloremque. Ut exercitationem ullam itaque blanditiis
-          eius!
-        </p>
-      </Book>
-      <Book img={book2.img} title={book2.title} author={book2.author} />
+      {bookList.map((book) => {
+        return <Book book={book}></Book>;
+      })}
     </section>
   );
 }
 
 //Passing props as parametres
-const Book = ({ img, title, author, children }) => {
-  //Equivalent to below code, destructing in the fn parametre itself
-  //Props destructuring const { img, title, author, children } = props;
+const Book = (props) => {
+  //Props now contain book object in place of title, author and image
+  const { img, title, author } = props.book;
   return (
     <article className="book">
       <img src={img} />
@@ -47,7 +43,6 @@ const Book = ({ img, title, author, children }) => {
       >
         {author.toUpperCase()}
       </h6>
-      {children}
     </article>
   );
 };
