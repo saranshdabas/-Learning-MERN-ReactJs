@@ -28,15 +28,18 @@ function Greeting() {
 }
 
 //Passing props as parametres
-const Book = (props) => {
+const Book = ({ img, title, author }) => {
+  //Equivalent to below code, destructing in the fn parametre itself
+  //Props destructuring
+  //const { img, title, author } = props;
   return (
     <article className="book">
-      <img src={props.img} />
-      <h5> {props.title} </h5>
+      <img src={img} />
+      <h5> {title} </h5>
       <h6
         style={{ color: "#617d98", fontSize: "0.75rem", marginTop: "0.25rem" }}
       >
-        {props.author.toUpperCase()}
+        {author.toUpperCase()}
       </h6>
     </article>
   );
