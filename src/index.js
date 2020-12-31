@@ -18,20 +18,26 @@ const book2 = {
 };
 
 //Passing props values in JSX
+//Child element is an elemetn in bw opening and closing tag of parent element
 function Greeting() {
   return (
     <section className="booklist">
-      <Book img={book1.img} title={book1.title} author={book1.author} />
+      <Book img={book1.img} title={book1.title} author={book1.author}>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae esse
+          alias eaque est doloremque. Ut exercitationem ullam itaque blanditiis
+          eius!
+        </p>
+      </Book>
       <Book img={book2.img} title={book2.title} author={book2.author} />
     </section>
   );
 }
 
 //Passing props as parametres
-const Book = ({ img, title, author }) => {
+const Book = ({ img, title, author, children }) => {
   //Equivalent to below code, destructing in the fn parametre itself
-  //Props destructuring
-  //const { img, title, author } = props;
+  //Props destructuring const { img, title, author, children } = props;
   return (
     <article className="book">
       <img src={img} />
@@ -41,6 +47,7 @@ const Book = ({ img, title, author }) => {
       >
         {author.toUpperCase()}
       </h6>
+      {children}
     </article>
   );
 };
