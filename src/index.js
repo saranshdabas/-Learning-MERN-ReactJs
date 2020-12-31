@@ -4,6 +4,9 @@ import ReactDom from "react-dom";
 //CSS
 import "./index.css";
 
+const title = "Ikigai: The Japanese secret to a long and happy life";
+const author = "Héctor García";
+
 //Nested componenets
 function Greeting() {
   return (
@@ -35,12 +38,10 @@ const Image = () => (
 
 const Author = () => (
   <h6 style={{ color: "#617d98", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-    Héctor García
+    {author.toUpperCase()}
   </h6>
 );
 
-const Title = () => (
-  <h5>Ikigai: The Japanese secret to a long and happy life </h5>
-);
+const Title = () => <h5> {title} </h5>;
 
 ReactDom.render(<Greeting />, document.getElementById("root"));
