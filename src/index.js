@@ -31,10 +31,11 @@ const bookList = [
 //Using map to return a list of books (JSX can render a list of objects)
 //Adding id as key prop in order for react to work with virtual dom as expected.
 function Greeting() {
+  //Using spread operator(...) to spread out(expose) object properties
   return (
     <section className="booklist">
       {bookList.map((book) => {
-        return <Book key={book.id} book={book}></Book>;
+        return <Book key={book.id} {...book}></Book>;
       })}
     </section>
   );
@@ -42,8 +43,8 @@ function Greeting() {
 
 //Passing props as parametres
 const Book = (props) => {
-  //Props now contain book object in place of title, author and image
-  const { img, title, author } = props.book;
+  //Props now contain spreaded properties(not book object) and hence we can destructure props itself.
+  const { img, title, author } = props;
   return (
     <article className="book">
       <img src={img} />
